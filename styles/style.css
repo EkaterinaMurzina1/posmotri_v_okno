@@ -178,13 +178,13 @@ ol {
 
 .search-form__submit-button {
   min-width: 194px;
-  padding: 6px 73.5px;
+  height: 34px;
   margin-top: auto;
 }
 
 .more-button {
   min-width: 399px;
-  padding: 6px 144.5px;
+  height: 34px;
 }
 
 .button:hover {
