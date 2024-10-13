@@ -13,7 +13,7 @@ html {
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: "Fira Sans Condensed", sans-serif;
+  font-family: "Fira Sans Condensed", "Bergman Sans", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
   display: flex;
@@ -42,10 +42,9 @@ ol {
 
 .content {
   display: flex;
-  max-width: 1140px;
-  min-height: 534px;
+  width: 1140px;
+  align-content: flex-end;
   gap: 30px;
-  margin: 133px 30px;
 }
 
 .result__video-container {
@@ -66,9 +65,8 @@ ol {
   display: flex;
   justify-content: space-between;
   justify-items: start;
-  height: 54px;
   gap: 40px;
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", "Bergman Sans", sans-serif;
 }
 
 .search-form__fieldset {
@@ -81,12 +79,14 @@ ol {
   border-bottom: 1px solid #ffffff;
   border-right: none;
   border-left: none;
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", "Bergman Sans", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 21.6px;
   color: #ffffffb2;
   width: 225px;
+  min-height: 27px;
+  appearance: none;
 }
 
 .search-form__label {
@@ -103,13 +103,8 @@ ol {
   cursor: pointer;
 }
 
-.search-form__label:active {
-  outline: none !important;
-}
-
 .search-form__textfield:active {
-  border-right: 1px solid #ffffff;
-  border-left: 1px solid #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .search-form__textfield:focus {
@@ -121,11 +116,14 @@ ol {
   outline-offset: 1px;
 }
 
+.search-form__label:active {
+  outline: none;
+}
+
 .search-form__fieldset-title {
   font-size: 18px;
   font-weight: 400;
   line-height: 21.6px;
-  appearance: none;
   margin-bottom: 5px;
 }
 
@@ -138,42 +136,40 @@ ol {
   gap: 15px;
 }
 
-.search-form__pseudo-checkbox::before {
-  content: " ";
+.search-form__pseudo-checkbox {
   display: flex;
-  position: relative;
+  align-items: center;
+  justify-content: center;
   width: 19px;
   height: 19px;
-  flex-shrink: 0;
-  flex-grow: 0;
   border: 1px solid #ffffff;
 }
 
-.search-form__checkbox:active + .search-form__pseudo-checkbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.search-form__pseudo-checkbox::before {
+  content: "";
+  display: block;
   width: 15px;
   height: 15px;
   background-color: #ffffff;
+  visibility: hidden;
 }
 
-.search-form__checkbox:checked + .search-form__pseudo-checkbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 15px;
-  height: 15px;
-  background-color: #ffffff;
+.search-form__checkbox:active + .search-form__pseudo-checkbox::before {
+  content: "";
+  visibility: visible;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+  content: "";
+  visibility: visible;
 }
 
 .button {
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", "Bergman Sans", sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 21.6px;
   text-align: center;
-  padding: 6px 73.5px;
   background-color: transparent;
   border: 1px solid #ffffff;
   color: #ffffff;
@@ -182,14 +178,13 @@ ol {
 
 .search-form__submit-button {
   min-width: 194px;
-  height: 34px;
+  padding: 6px 73.5px;
   margin-top: auto;
 }
 
 .more-button {
   min-width: 399px;
-  height: 34px;
-  background-color: transparent;
+  padding: 6px 144.5px;
 }
 
 .button:hover {
@@ -198,7 +193,6 @@ ol {
 
 .button:active {
   background-color: #545050;
-  border: 1px solid #ffffff;
 }
 
 .button:focus {
@@ -227,7 +221,7 @@ ol {
 }
 
 .title {
-  font-family: "Oswald";
+  font-family: "Oswald", "Bergman Sans", sans-serif;
   font-size: 75px;
   font-weight: 700;
   line-height: 70.5px;
@@ -240,12 +234,8 @@ ol {
   color: #545050;
 }
 
-.content__list-item {
-  margin-bottom: 30px;
-}
-
 .content__list-item:not(:last-child) {
-  margin-bottom: 0;
+  margin-bottom: 30px;
 }
 
 .content__card-link {
@@ -260,22 +250,21 @@ ol {
   width: 398px;
   min-height: 107px;
   cursor: pointer;
-  margin-bottom: 30px;
 }
 
-.content__video-card:hover {
+.content__card-link:hover {
   text-decoration: underline;
 }
 
-.content__video-card:active {
+.content__card-link:active {
   background-color: #545050;
 }
 
-.content__video-card:focus {
+.content__card-link:focus {
   outline: none;
 }
 
-.content__video-card:focus-visible {
+.content__card-link:focus-visible {
   border: 1px solid #ffffff;
 }
 
@@ -293,7 +282,7 @@ ol {
 }
 
 .content__video-card-title {
-  font-family: "Oswald";
+  font-family: "Oswald", "Bergman Sans", sans-serif;
   font-size: 30px;
   font-weight: 700;
   line-height: 30px;
@@ -301,6 +290,10 @@ ol {
   color: #ffffff;
   text-transform: uppercase;
   margin-top: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 
 .content__video-card-description {
